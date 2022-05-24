@@ -148,6 +148,8 @@
 <wire x1="0" y1="52.07" x2="74.93" y2="52.07" width="0.2032" layer="20"/>
 <wire x1="74.93" y1="52.07" x2="74.93" y2="0" width="0.2032" layer="20"/>
 <wire x1="74.93" y1="0" x2="0" y2="0" width="0.2032" layer="20"/>
+<dimension x1="0" y1="-1.27" x2="74.93" y2="-1.27" x3="37.465" y3="-2.54" textsize="1.778" layer="20"/>
+<dimension x1="-2.54" y1="-2.54" x2="-2.54" y2="52.07" x3="-2.54" y3="24.765" textsize="1.778" layer="20"/>
 </plain>
 <libraries>
 <library name="SparkFun-Connectors">
@@ -460,73 +462,6 @@ You are welcome to use this library for commercial purposes. For attribution, we
 </package>
 </packages>
 </library>
-<library name="CYKIT">
-<packages>
-<package name="CY8CKIT-059_TARGET">
-<pad name="12" x="2.54" y="8.89" drill="1.016" diameter="1.876"/>
-<pad name="1" x="30.48" y="8.89" drill="1.016" diameter="1.876" shape="square"/>
-<pad name="11" x="5.08" y="8.89" drill="1.016" diameter="1.876"/>
-<pad name="10" x="7.62" y="8.89" drill="1.016" diameter="1.876"/>
-<pad name="9" x="10.16" y="8.89" drill="1.016" diameter="1.876"/>
-<pad name="8" x="12.7" y="8.89" drill="1.016" diameter="1.876"/>
-<pad name="7" x="15.24" y="8.89" drill="1.016" diameter="1.876"/>
-<pad name="6" x="17.78" y="8.89" drill="1.016" diameter="1.876"/>
-<pad name="5" x="20.32" y="8.89" drill="1.016" diameter="1.876"/>
-<pad name="4" x="22.86" y="8.89" drill="1.016" diameter="1.876"/>
-<pad name="3" x="25.4" y="8.89" drill="1.016" diameter="1.876"/>
-<pad name="2" x="27.94" y="8.89" drill="1.016" diameter="1.876"/>
-<pad name="13" x="0" y="8.89" drill="1.016" diameter="1.876"/>
-<pad name="14" x="-2.54" y="8.89" drill="1.016" diameter="1.876"/>
-<pad name="15" x="-5.08" y="8.89" drill="1.016" diameter="1.876"/>
-<pad name="16" x="-7.62" y="8.89" drill="1.016" diameter="1.876"/>
-<pad name="17" x="-10.16" y="8.89" drill="1.016" diameter="1.876"/>
-<pad name="18" x="-12.7" y="8.89" drill="1.016" diameter="1.876"/>
-<pad name="19" x="-15.24" y="8.89" drill="1.016" diameter="1.876"/>
-<pad name="20" x="-17.78" y="8.89" drill="1.016" diameter="1.876"/>
-<pad name="21" x="-20.32" y="8.89" drill="1.016" diameter="1.876"/>
-<pad name="22" x="-22.86" y="8.89" drill="1.016" diameter="1.876"/>
-<pad name="23" x="-25.4" y="8.89" drill="1.016" diameter="1.876"/>
-<pad name="24" x="-27.94" y="8.89" drill="1.016" diameter="1.876"/>
-<pad name="25" x="-30.48" y="8.89" drill="1.016" diameter="1.876"/>
-<pad name="26" x="-33.02" y="8.89" drill="1.016" diameter="1.876"/>
-<pad name="27" x="30.48" y="-11.43" drill="1.016" diameter="1.876" shape="square"/>
-<pad name="28" x="27.94" y="-11.43" drill="1.016" diameter="1.876"/>
-<pad name="29" x="25.4" y="-11.43" drill="1.016" diameter="1.876"/>
-<pad name="30" x="22.86" y="-11.43" drill="1.016" diameter="1.876"/>
-<pad name="31" x="20.32" y="-11.43" drill="1.016" diameter="1.876"/>
-<pad name="32" x="17.78" y="-11.43" drill="1.016" diameter="1.876"/>
-<pad name="33" x="15.24" y="-11.43" drill="1.016" diameter="1.876"/>
-<pad name="34" x="12.7" y="-11.43" drill="1.016" diameter="1.876"/>
-<pad name="35" x="10.16" y="-11.43" drill="1.016" diameter="1.876"/>
-<pad name="36" x="7.62" y="-11.43" drill="1.016" diameter="1.876"/>
-<pad name="37" x="5.08" y="-11.43" drill="1.016" diameter="1.876"/>
-<pad name="38" x="2.54" y="-11.43" drill="1.016" diameter="1.876"/>
-<pad name="39" x="0" y="-11.43" drill="1.016" diameter="1.876"/>
-<pad name="40" x="-2.54" y="-11.43" drill="1.016" diameter="1.876"/>
-<pad name="41" x="-5.08" y="-11.43" drill="1.016" diameter="1.876"/>
-<pad name="42" x="-7.62" y="-11.43" drill="1.016" diameter="1.876"/>
-<pad name="43" x="-10.16" y="-11.43" drill="1.016" diameter="1.876"/>
-<pad name="44" x="-12.7" y="-11.43" drill="1.016" diameter="1.876"/>
-<pad name="45" x="-15.24" y="-11.43" drill="1.016" diameter="1.876"/>
-<pad name="46" x="-17.78" y="-11.43" drill="1.016" diameter="1.876"/>
-<pad name="47" x="-20.32" y="-11.43" drill="1.016" diameter="1.876"/>
-<pad name="48" x="-22.86" y="-11.43" drill="1.016" diameter="1.876"/>
-<pad name="49" x="-25.4" y="-11.43" drill="1.016" diameter="1.876"/>
-<pad name="50" x="-27.94" y="-11.43" drill="1.016" diameter="1.876"/>
-<pad name="51" x="-30.48" y="-11.43" drill="1.016" diameter="1.876"/>
-<pad name="52" x="-33.02" y="-11.43" drill="1.016" diameter="1.876"/>
-<pad name="67" x="-33.02" y="3.81" drill="1.016" diameter="1.876"/>
-<pad name="68" x="-33.02" y="1.27" drill="1.016" diameter="1.876"/>
-<pad name="69" x="-33.02" y="-1.27" drill="1.016" diameter="1.876"/>
-<pad name="70" x="-33.02" y="-3.81" drill="1.016" diameter="1.876"/>
-<pad name="71" x="-33.02" y="-6.35" drill="1.016" diameter="1.876" shape="square"/>
-<wire x1="-35.56" y1="11.43" x2="-35.56" y2="-13.97" width="0.127" layer="21"/>
-<wire x1="-35.56" y1="11.43" x2="33.02" y2="11.43" width="0.127" layer="21"/>
-<wire x1="33.02" y1="11.43" x2="33.02" y2="-13.97" width="0.127" layer="21"/>
-<wire x1="33.02" y1="-13.97" x2="-35.56" y2="-13.97" width="0.127" layer="21"/>
-</package>
-</packages>
-</library>
 </libraries>
 <attributes>
 </attributes>
@@ -769,7 +704,6 @@ design rules under a new name.</description>
 <attribute name="PROD_ID" value="XXX-00000" x="40.64" y="-15.24" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="VALUE" x="69.088" y="21.59" size="0.6096" layer="27" font="vector" ratio="20" rot="R270"/>
 </element>
-<element name="U$1" library="CYKIT" package="CY8CKIT-059_TARGET" value="CY8CKIT-059_TARGET" x="123.19" y="36.83" smashed="yes"/>
 <element name="PSOC[P_3.3-GND]" library="SparkFun-Connectors" package="1X05" value="" x="2.54" y="7.62" smashed="yes">
 <attribute name="NAME" x="1.27" y="9.017" size="0.6096" layer="25" font="vector" ratio="20"/>
 <attribute name="VALUE" x="1.27" y="5.588" size="0.6096" layer="27" font="vector" ratio="20"/>
