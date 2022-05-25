@@ -1,0 +1,7 @@
+C:\Users\piera\OneDrive - Politecnico di Milano\university\POLIMI\MAGISTRALE\esami 5\BIOSENSORS LAB - Cerveri\final project biosensors\Firmware_PSoC\FinalProject.cydsn\FinalProject.cyprj|2c3c85b0-6bbf-4bb4-b629-c5af73196025
+C:\Users\piera\OneDrive - Politecnico di Milano\university\POLIMI\MAGISTRALE\esami 5\BIOSENSORS LAB - Cerveri\PSoC\Examples\AnnotationLibrary\AnnotationLibrary_lib\AnnotationLibrary_lib.cylib\AnnotationLibrary_lib.cyprj|e3104316-9807-4184-9256-eba0a9a7ce9e
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|cda45a07-f33a-4478-b403-89fb55d533d2
+C:\Users\piera\OneDrive\Documenti\PSoC Creator\4.4\Downloads ( 4.4).cylib\Downloads ( 4.4).cyprj|e37f722e-4de8-4ff2-92d4-73442fbd90f4
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|656cb863-bd72-40d8-ab03-1d9f193de40e
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|1a696be2-ffb1-4928-9c0a-046088d279fc
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|9ed1d265-6d74-4b1a-b692-01a0550e4dad
