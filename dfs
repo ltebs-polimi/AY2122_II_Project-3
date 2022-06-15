@@ -1,0 +1,128 @@
+[33mcommit cd824cd253ec3cd535f6931abeeb3b0e6d94c6c7[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Merge: 32438ab 3623120
+Author: Aurora Pierantozzi <aurora.pierantozzi@mail.polimi.it>
+Date:   Fri Jun 10 15:00:41 2022 +0200
+
+    Merge branch 'master' of https://github.com/AuroraPierantozzi/AY2122_II_Project-3
+
+[33mcommit 3623120f616e3901470abf65b04cc64c3b4062d1[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Merge: ae8a453 1d48de8
+Author: AuroraPierantozzi <102611861+AuroraPierantozzi@users.noreply.github.com>
+Date:   Fri Jun 10 14:52:48 2022 +0200
+
+    Merge branch 'ltebs-polimi:master' into master
+
+[33mcommit 1d48de83b27e77c192c6221002c313f65005fb5f[m
+Author: Adelaide Stucchi <94860246+adelplasters@users.noreply.github.com>
+Date:   Thu Jun 9 21:02:59 2022 +0200
+
+    Add files via upload
+
+[33mcommit 32438abcd648d5677cc2fef7656b905e8cc0c5af[m
+Author: Aurora Pierantozzi <aurora.pierantozzi@mail.polimi.it>
+Date:   Wed Jun 8 18:01:23 2022 +0200
+
+    Updated firmware code - removing FIFO
+
+[33mcommit 54ac3f1a7c6ec4313f7d49b94e2cff97cb290faa[m
+Author: Aurora Pierantozzi <aurora.pierantozzi@mail.polimi.it>
+Date:   Wed Jun 8 17:57:44 2022 +0200
+
+    serial reading of N packets of data
+
+[33mcommit ae8a4535ee1bad2541a63b2d3d3ceda9a458d048[m
+Merge: cce3a68 a255333
+Author: AuroraPierantozzi <102611861+AuroraPierantozzi@users.noreply.github.com>
+Date:   Tue May 31 12:04:19 2022 +0200
+
+    Merge branch 'ltebs-polimi:master' into master
+
+[33mcommit a2553334d069701a7d737f211e373bf7803ea77d[m
+Author: NataliaGinghini <100489683+NataliaGinghini@users.noreply.github.com>
+Date:   Wed May 25 20:29:47 2022 +0200
+
+    Final
+
+[33mcommit f4adca4ebe98d790cacb5d6f8ade83f5614843b5[m
+Author: LetiziaMozzorecchia <100783237+LetiziaMozzorecchia@users.noreply.github.com>
+Date:   Wed May 25 12:02:05 2022 +0200
+
+    AddCADpcb
+
+[33mcommit cce3a68d875d6e026d0ddc31227d58b9519beabd[m
+Author: Aurora Pierantozzi <aurora.pierantozzi@mail.polimi.it>
+Date:   Wed May 25 08:31:47 2022 +0200
+
+    Uploaded components' datasheets
+
+[33mcommit 0a384242e7a92eff3b9ba023ce0442d99806f78c[m
+Author: Aurora Pierantozzi <aurora.pierantozzi@mail.polimi.it>
+Date:   Wed May 25 08:31:08 2022 +0200
+
+    Created folder for 3D printer files
+
+[33mcommit 72d8a825715582362a140672d08254cf3c81a48a[m
+Author: Aurora Pierantozzi <aurora.pierantozzi@mail.polimi.it>
+Date:   Wed May 25 08:28:57 2022 +0200
+
+    specifiche di progetto - prima bozza
+
+[33mcommit c4d31e199f47efb0660f7d4ed78065e7f3357d56[m
+Author: Aurora Pierantozzi <aurora.pierantozzi@mail.polimi.it>
+Date:   Wed May 25 08:22:45 2022 +0200
+
+    Firmware updated
+
+[33mcommit 50e425aff3b43e71462229440dfd49b2d337db6f[m
+Author: NataliaGinghini <100489683+NataliaGinghini@users.noreply.github.com>
+Date:   Tue May 24 19:10:16 2022 +0200
+
+    Correction
+
+[33mcommit 44b0d2ace5820360d7726eeb012f3dca163cc77c[m
+Author: NataliaGinghini <100489683+NataliaGinghini@users.noreply.github.com>
+Date:   Fri May 20 13:54:40 2022 +0200
+
+    Schematic modification, board
+
+[33mcommit a9bfb39ab37e587c8558dbc1a026ba18015e4c83[m
+Author: NataliaGinghini <100489683+NataliaGinghini@users.noreply.github.com>
+Date:   Fri May 20 08:57:12 2022 +0200
+
+    Adding schematic
+
+[33mcommit 882be8a482a6298b10d1c9e470de13c1ba9ea22a[m
+Author: NataliaGinghini <100489683+NataliaGinghini@users.noreply.github.com>
+Date:   Fri May 20 08:56:40 2022 +0200
+
+    Delete PCB directory
+
+[33mcommit c2b79396856235f94611b5d4366d0d719243bcf5[m
+Author: NataliaGinghini <100489683+NataliaGinghini@users.noreply.github.com>
+Date:   Fri May 20 08:55:32 2022 +0200
+
+    Addind schematic
+
+[33mcommit 9ee637830dd95d3c4d41bf7d407d9eaf09e18576[m
+Author: LetiziaMozzorecchia <100783237+LetiziaMozzorecchia@users.noreply.github.com>
+Date:   Mon May 16 14:03:15 2022 +0200
+
+    Add files via upload
+
+[33mcommit 6930602d1c858ac8fa285c132e9d1c40abed06ea[m
+Author: Matteo Rossi <rossimatteo199@gmail.com>
+Date:   Mon May 9 14:10:30 2022 +0200
+
+    Docs folder renamed as Biblio
+
+[33mcommit 08df953a95158452fb22693bfc741130879384cb[m
+Author: Matteo Rossi <rossimatteo199@gmail.com>
+Date:   Mon May 9 14:08:24 2022 +0200
+
+    Added base .gitignore
+
+[33mcommit c5aab04d550cff8add0270d76a62e31cd149b475[m
+Author: Matteo Rossi <rossimatteo199@gmail.com>
+Date:   Wed Apr 20 11:56:04 2022 +0200
+
+    First commit

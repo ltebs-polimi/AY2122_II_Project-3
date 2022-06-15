@@ -1,13 +1,6 @@
 /* ========================================
  *
- * @brief Main file for MPU9250 project.
- * 
- * This is the main file to be used with the
- * MPU9250 project. It sets up all the 
- * components required for the project.
- * 
- * @author Davide Marzorati
- * @date 29 March, 2019
+ *
  * ========================================
 */
 
@@ -17,7 +10,7 @@
 #include "buttonled.h"
 #include "stdio.h"
 
-#define N_FRAME 10 //change it to 10
+#define N_FRAME 10
 int flag_data_ready = 0; 
 int i;
 int k;
@@ -28,18 +21,19 @@ CY_ISR_PROTO(MPU9250_DR_ISR);
 
 int main(void)
 {
-    CyGlobalIntEnable; /* Enable global interrupts. */
+    // Enable glogal interrupts
+    CyGlobalIntEnable; 
     
     // Start UART & BT components
     UART_Debug_Start();
     UART_BT_Start();
     
-//    UART_Debug_PutString("**************\r\n");
-//    UART_Debug_PutString("    MPU9250   \r\n");
-//    UART_Debug_PutString("**************\r\n");
-    UART_BT_PutString("**************\r\n");
-    UART_BT_PutString("    MPU9250   \r\n");
-    UART_BT_PutString("**************\r\n");
+    UART_Debug_PutString("**************\r\n");
+    UART_Debug_PutString("    MPU9250   \r\n");
+    UART_Debug_PutString("**************\r\n");
+//    UART_BT_PutString("**************\r\n");
+//    UART_BT_PutString("    MPU9250   \r\n");
+//    UART_BT_PutString("**************\r\n");
     
     // Start I2C component
     I2C_MPU9250_Master_Start();
@@ -55,8 +49,8 @@ int main(void)
     for (int address = 0; address < 128; address++) {
         if (I2C_MPU9250_Master_MasterSendStart(address, 0) == I2C_MPU9250_Master_MSTR_NO_ERROR) {
             sprintf(message, "Found device at: 0x%02x\r\n", address);
-//            UART_Debug_PutString(message);
-            UART_BT_PutString(message);
+            UART_Debug_PutString(message);
+//            UART_BT_PutString(message);
         }
         I2C_MPU9250_Master_MasterSendStop();
     }
@@ -76,8 +70,10 @@ int main(void)
     // Read WHO AM I register and compare with the expected value
     uint8_t whoami = MPU9250_ReadWhoAmI();
     sprintf(message, "WHO AM I: 0x%02x - Expected: 0x%02x\r\n", whoami, MPU9250_WHO_AM_I);
-//    UART_Debug_PutString(message);
-    UART_BT_PutString(message);
+    UART_Debug_PutString(message);
+//    UART_BT_PutString(message);
+    
+   
     
     MPU9250_ISR_StartEx(MPU9250_DR_ISR);
     
@@ -92,10 +88,7 @@ int main(void)
 
 CY_ISR(MPU9250_DR_ISR) { 
     
-    //PIN_LED_Write(1); //una volta triggerata non ne usciamo, perche il led non si spegne 
-    //flag_data_ready = 1; //ritorno sempre qua con il debug 
-
-    
+    PIN_LED_Write(1);
     // Load data on the packet to be sent
     for (i=0; i<N_FRAME; i++) {
         
@@ -110,9 +103,9 @@ CY_ISR(MPU9250_DR_ISR) {
             
     if (i == (N_FRAME)) {
         
-        // Send packet over UART -> once having put inside the packet N_FRAME of data
-        UART_Debug_PutArray(packet_to_send,(N_FRAME*12)+2); 
-//        UART_BT_PutArray(packet_to_send,(N_FRAME*12)+2); 
+        // Send packet over BT -> once having put inside the packet N_FRAME of data
+//        UART_Debug_PutArray(packet_to_send,(N_FRAME*12)+2); 
+        UART_BT_PutArray(packet_to_send,(N_FRAME*12)+2); 
         // Refresh the packet
         k = 0;
         i = 0;
