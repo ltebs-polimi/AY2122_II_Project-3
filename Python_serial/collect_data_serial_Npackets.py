@@ -1,30 +1,34 @@
+
 from turtle import shape
 import numpy as np
 import serial as sr
 import pandas as pd
 import csv 
 
-n_packets = 40 #numero di pacchetti da mandare (ciascuno con 10 frame)
-mat = np.zeros(shape=(10,6), dtype=np.float16) #array con dentro 1 pacchetto di dati
+n_packets = 40 #numero di pacchetti da mandare al file csv
+n_frame = 10 #ciascun pacchetto ha n_frame
+send_bytes = (12*n_frame)+2 #bytes all'interno di 1 pacchetto mandati via seriale dal BT
 
-label = np.full(shape=(n_packets*10,1), fill_value = 2) #colonna label per il file csv
+mat = np.zeros(shape=(n_frame,6), dtype=np.float16) #array con dentro 1 pacchetto di dati
+
+label = np.full(shape=(n_packets*n_frame,1), fill_value = 0) #colonna label per il file csv
 # 0 = DRITTO
 # 1 = ROVESCIO 
 # 2 = BATTUTA
 
 #connessione a Bluetooth HC05 = COM19 (o UART_Debug = COM17)
-serialPort = sr.Serial(port = "COM17", baudrate=57600) 
+serialPort = sr.Serial(port = "COM19", baudrate=57600) 
 
 
 for packets in range(0,n_packets):
 
-    #lettura di 1 pacchetto (con 10 frame)
-    data=serialPort.read(122) 
+    #lettura di 1 pacchetto (con n_frame)
+    data=serialPort.read(send_bytes) 
 
     #controllo header e tail per ogni pacchetto
-    if ((data[0] == 0XA0) and (data[0+121] == 0XC0)):
+    if ((data[0] == 0XA0) and (data[0+(send_bytes-1)] == 0XC0)):
 
-        for r in range(0,10): #per ogni frame nel pacchetto (tot 10)
+        for r in range(0,n_frame): #per ogni frame nel pacchetto
             c=0
             for i in range (1,12,2): 
                 col = np.float16((data[i+12*(r)]<<8) + data[(i+1)+12*(r)])
@@ -48,7 +52,7 @@ for packets in range(0,n_packets):
 mat_big = np.concatenate([mat_big,label], axis=1)
 
 
-pd.DataFrame(mat_big).to_csv('nome_cognome_data_LABEL=2.csv', 
+pd.DataFrame(mat_big).to_csv('prova_BT.csv', 
                             header=["ACC_X", "ACC_Y", "ACC_Z", "GYR_X", "GYR_Y", "GYR_Z", "label"], 
                             index=False)
 
@@ -56,5 +60,3 @@ pd.DataFrame(mat_big).to_csv('nome_cognome_data_LABEL=2.csv',
 #if (flag_ready):
     #serialPort.reset_input_buffer()
     #flag_ready = 0
-
-#organizing the data collected -> TO DO
