@@ -13,14 +13,14 @@ This code allows to use a MPU9250 IMU sensor with a PSoC device to acquire and t
 
 **DEFAULT IMU SETTINGS**
 
-> Accelerometer and gyroscope data are read and sent via Bluetooth when the Data Ready interrupt internal to the IMU is triggered ("New data is available to be read from Sensors Registers").
+Accelerometer and gyroscope data are read and sent via Bluetooth when the "Data Ready" interrupt internal to the IMU is triggered ("New data is available to be read from Sensors Registers").
 
-> The sample rate is set to 200 Hz by scaling the internal sample rate equal to 1kHz with a sample rate divider equal to 4:
+The sample rate is set to 200 Hz by scaling the internal sample rate equal to 1kHz with a sample rate divider equal to 4:
 SMPLRT = INT_SMPLRT / (1 + SMPLRT_DIV)
 
-> The accelerometer data is expressed in +-2g while the gyroscope data is expressed in +-250 dps (degrees per second).
+The accelerometer data is expressed in +-2g while the gyroscope data is expressed in +-250 dps (degrees per second).
 
-> The function used to opportunely set the IMU registers is *MPU9250_Start()*.
+The function used to opportunely set the IMU registers is *MPU9250_Start()*.
 
 
 **DATA READING**
