@@ -53,3 +53,11 @@ The variable *shot* is then given to the GUI that in turn updates the shots’ c
 --------------------------------------------
 
 **GUI**
+
+In order to create our GUI we have used *Tkinter Python Library*.
+The GUI contains the following widgets: 
+* Timer 
+* 3 different Buttons, *Start, Stop and Reset*: *Start* enable the Timer and let the game begin, *Stop* disable the Timer and block the acquisition, *Reset* resets the Timer in order to prepare it for another acquisition. 
+* LED which turns green or red depending on the acquisition phase.
+* Scoreboard containing the scores related to the different shots: *serve*, *forehand* and *backhand*. It communicates with the Classification Algorithm and the scores are incremented by the latter. 
+
