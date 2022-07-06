@@ -5,32 +5,54 @@
 ## PYTHON code 
 
 This code allows to:
-1.  Collect via Bluetooth the raw data from the IMU MPU9250 sensor placed on the smart tennis racket;
-2.	Classify the tennis shot according to the measurements obtained;
-3.	Display the type of the different shots made on a GUI.
+1.  Collect via Bluetooth the raw data from an MPU9250 9-axis IMU sensor mounted on a smart tennis racket;
+2.	Classify the tennis shot made according to the accelerometer & gyroscope measurements obtained;
+3.	Display on a GUI the shot type predicted in real-time.
+
+To be specified according to your PC settings: 
+- *BT_COM* 
+
+--------------------------------------------
+
+**GUI WINDOW & WIDGETS**
+
+In order to create the  GUI we have used *Tkinter Python Library* and to make it communicate with the Classification Algorithm we used *Threading Python Library*. 
+
+The GUI contains the following widgets: 
+
+* Timer, which keeps track of the time of the acquisition session.
+
+* LED, which turns green or red depending on the acquisition phase.
+
+* Scoreboard, containing the scores related to the different shots predicted by the Classification Algorithm: *serve*, *forehand* and *backhand*.
+
+* Buttons: 
+    * COM -> to open the serial port (COM) and build the Random Forest Classifier.
+    * START -> to enable the Timer and to activate the 2 threads: *Start_GUI()* and *Start_acquisition()*.
+    * STOP -> to disable the Timer and to block the acquisitions, thus showing the number of shots made up to that moment.
+    * RESET -> to reset Timer and Scoreboard in order to prepare them for another session (to be used after pushing the STOP button).
 
 
 --------------------------------------------
 
 **DATA COLLECTION**
 
-Once the battery is connected, the device sends the array containing the raw data to the PC via Bluetooth module HC-06 (baud rate 57600 bps). 
+Once the COM button is pressed, the *BT_COM* port of the Bluetooth module HC-06 is open at baudrate = 5700 bps.
+When the START button is pressed, the 2° thread (*Start_acquisition()*) calls the function *Predict_Data_Packet()* which allows to acquire and classify the data from the IMU. 
 
-Acquisition is done by reading *N_PACKETS* and decoding the corresponding array of data, thus creating the corresponding CSV file.
-
-With *N_PACKETS* = 40, the acquisition takes about 5 seconds (including the time to open COM port), which is approximatively equal to the duration of one tennis shot.
+Each acquisition is done by reading *N_PACKETS* and decoding the corresponding array of data (*data[]*).
+With *N_PACKETS* = 40, the acquisition takes about 4 seconds, which is approximatively equal to the duration of one tennis shot.
 
 Each packet contains 122 bytes: 
 -	1 HEADER = 0XA0
--	120 bytes =  10 frames of data: each frame contains 12 bytes corresponding to accelerometer and gyroscope readings, with 2 bytes (high and low bits) for each ACCX, ACCY, ACCZ, GYRX, GYRY, GYRZ.
+-	120 bytes, representing 10 frames of data: each frame contains 12 bytes corresponding to accelerometer and gyroscope data registers, with 2 bytes (high and low bits) for each ACCX, ACCY, ACCZ, GYRX, GYRY, GYRZ reading.
 -	1 TAIL = 0XC0
 
-Data decoding is done by filling by creating a *mat_big* matrix (400x6) 
--	rows -> *N_FRAME* * *N_PACKETS* = 10*40 
--	columns -> raw data: ACCX, ACCY, ACCZ, GYRX, GYRY, GYRZ (merging high bytes & low bytes for each measurement and converting the acceleration and gyroscope values to the right FSR (+-2g, +-250 dps).
+Data decoding is done by creating a *mat_big* matrix with:
+-	400 rows -> *N_FRAME* * *N_PACKETS* = 10*40 
+-	6 columns -> raw data: ACCX, ACCY, ACCZ, GYRX, GYRY, GYRZ (obtained by merging high bytes & low bytes for each measurement and converting the acceleration and gyroscope values to the right FSR (+-2g, +-250 dps)).
 
-This matrix is then exported to the CSV file named *acquisition_file.csv*.
-
+This matrix is then given to the Classification Algorithm that, every 4 seconds, predicts the type of shot.
 
 
 --------------------------------------------
@@ -39,25 +61,19 @@ This matrix is then exported to the CSV file named *acquisition_file.csv*.
 
 * TRAINING
 
-Random Forest multiclass classifier has been trained with 55415 values (*training_dataset.csv* opportunely cleaned). For more details see  the *ACQUISITION_PROTOCOL.pdf* file.
+The *Classifier_Training()* function is run just once when the COM button is pressed. 
+The Random Forest Classifier has been trained with 140 acquisitions (*training_dataset.csv*). 
+One acquisition is given by the 1°, 2° and 3° quantiles values of the 6 IMU measurements.
+For more details about acquistions and choice of the Classifier see the *acquisition_protocol.pdf* file.
 
-The proportion for training-test splitting has been set to 70-30%.
+*  MAKING PREDICTIONS
 
+In the *Predict_Data_Packet()* function, from the mat_big matrix (representing one acquisition) the 1° (0.25), 2° (0.5 = median) and 3° (0.75) quantiles of each IMU measruement are extracted and used to guess the shot made with the Random Forest classifier. 
+The label *shot* returned by the Classification Algorithm is then used to updates the shots' counts in the Scoreboard: 
+- shot = 0 🡪 Forehand
+- shot = 1 🡪 Backhand
+- shot = 2 🡪 Serve
+- shot = 3 🡪 "no shot" 
 
-*  MAKE PREDICTIONS
-
-The *acquisition_file.csv*, processed as the training dataset (removing NaN and infinte values) thus containing approximately 400 values, is fed into the classifier that returns as target variable the type of shot corresponding to that pattern of accelerometer and gyroscope measurements.
-
-The variable *shot* is then given to the GUI that in turn updates the shots’ counts accordingly.
 
 --------------------------------------------
-
-**GUI**
-
-In order to create our GUI we have used *Tkinter Python Library* and to make it communicate with the Classification Algorithm we used *Threading Python Library*. 
-The GUI contains the following widgets: 
-* Timer 
-* 4 different Buttons, *Com, Start, Stop and Reset*: *Com* is used to open the serial port (COM) and to perform the training of Random forest Classifier, *Start* enable the Timer and starts the two threads (GUI and Classification Algorithm), *Stop* disable the Timer and block the acquisition, *Reset* resets the Timer and the Scoreboard in order to prepare them for another acquisition. 
-* LED which turns green or red depending on the acquisition phase.
-* Scoreboard containing the scores related to the different shots: *serve*, *forehand* and *backhand*. It communicates with the Classification Algorithm and the scores are incremented by the output of the latter. 
-
