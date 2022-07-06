@@ -54,10 +54,10 @@ The variable *shot* is then given to the GUI that in turn updates the shots’ c
 
 **GUI**
 
-In order to create our GUI we have used *Tkinter Python Library*.
+In order to create our GUI we have used *Tkinter Python Library* and to make it communicate with the Classification Algorithm we used *Threading Python Library*. 
 The GUI contains the following widgets: 
 * Timer 
-* 3 different Buttons, *Start, Stop and Reset*: *Start* enable the Timer and let the game begin, *Stop* disable the Timer and block the acquisition, *Reset* resets the Timer in order to prepare it for another acquisition. 
+* 4 different Buttons, *Com, Start, Stop and Reset*: *Com* is used to open the serial port (COM) and to perform the training of Random forest Classifier, *Start* enable the Timer and starts the two threads (GUI and Classification Algorithm), *Stop* disable the Timer and block the acquisition, *Reset* resets the Timer and the Scoreboard in order to prepare them for another acquisition. 
 * LED which turns green or red depending on the acquisition phase.
-* Scoreboard containing the scores related to the different shots: *serve*, *forehand* and *backhand*. It communicates with the Classification Algorithm and the scores are incremented by the latter. 
+* Scoreboard containing the scores related to the different shots: *serve*, *forehand* and *backhand*. It communicates with the Classification Algorithm and the scores are incremented by the output of the latter. 
 
