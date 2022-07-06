@@ -35,6 +35,7 @@ global data
 global flag_stop
 global flag_reset 
 global flag_start
+global colpo
 
 
 # Variables initialization
@@ -51,6 +52,7 @@ n_packets = 40                                      # Number of packets to class
 n_frame = 10                                        # Each packet has n_frame
 send_bytes = (12*n_frame)+2                         # Bytes within 1 packet sent by the BT 
 mat = np.zeros(shape=(n_frame,6), dtype=np.float16) # Array wtih inside 1 packet of data 
+
 
 
 
@@ -111,6 +113,12 @@ def Stop_GUI():
   global flag_stop
   global running
   global flagr, flagb, flagd
+  global colpo
+  global b, d, r 
+  
+  
+
+  acquisition.destroy()
 
   flag_stop = True
 
@@ -121,9 +129,22 @@ def Stop_GUI():
   box_led4 = Canvas(window, bd =0, bg = "#666699", height= 80, width = 80, highlightthickness=0)
   box_led4.grid(row = 20, columns = 7, padx = 135, sticky = "W")
   oval3 = box_led4.create_oval(25,22,55,52, fill = "red")
-       
-  acquisition = Label(window, text = "GAME STARTED", font = ("Orator Std", 20, 'bold'), fg = "#666699", bg = "#666699")
-  acquisition.grid(row = 40, columns =8, pady = 50, padx = 160, sticky = "W")
+
+  if (b > r or b > d):
+    print(b)
+    colpo = Label(window, text = "il colpo più frequente è stata la battuta", font = ("Orator Std", 30, 'bold'), fg = "#660033", bg = "#666699")   
+    colpo.grid(row = 40, columns = 8, pady = 50, padx = 60, sticky = "W")
+
+  if (r > b or r > d):
+    colpo = Label(window, text = "il colpo più frequente è stata il rovescio", font = ("Orator Std", 10, 'bold'), fg = "#660033", bg = "#666699")   
+    colpo.grid(row = 40, columns = 8, pady = 50, padx = 160, sticky = "W")
+
+  if (d > r or d > b):
+    colpo = Label(window, text = "il colpo più frequente è stata il rovescio", font = ("Orator Std", 10, 'bold'), fg = "#660033", bg = "#666699")   
+    colpo.grid(row = 40, columns = 8, pady = 50, padx = 160, sticky = "W")
+
+
+  
 
   flagb = False
   flagd = False
@@ -141,6 +162,10 @@ def Reset():
   global flagr, flagb, flagd
   global hour, minute, second
   global b, r, d
+
+  colpo.destroy()
+  acquisition.destroy()
+  
 
   flag_reset = True
 
@@ -168,8 +193,8 @@ def Reset():
   box_led3.grid(row = 20, columns = 7, padx = 135, sticky = "W" )
   oval3 = box_led3.create_oval(25,22,55,52, fill = "red")
 
-  acquisition3 = Label(window, text = "GAME STARTED", font = ("Orator Std", 30, 'bold'), fg = "#666699", bg = "#666699")
-  acquisition3.grid(row = 40, columns =8, pady = 50, padx = 160, sticky = "W")
+  #acquisition3 = Label(window, text = "GAME STARTED", font = ("Orator Std", 30, 'bold'), fg = "#666699", bg = "#666699")
+  #acquisition3.grid(row = 40, columns =8, pady = 50, padx = 160, sticky = "W")
 
 
 #########################################################
@@ -229,8 +254,8 @@ def System_Initialization():
 def Classifier_Training():
   global model_rf
   
-  # Import data collected (see acquisition_protocol.pdf)
-  df_all = pd.read_csv('training_dataset_stat.csv') #(140,19)
+  # Import data collected
+  df_all = pd.read_csv('training_dataset.csv') #(140,19)
 
   # Cleaning the dataset, removing infinte and NaN values
   df_all.replace([np.inf, -np.inf], np.nan, inplace=True)
@@ -273,6 +298,7 @@ def Classifier_Training():
 
 def Start_GUI():
   global running
+  global acquisition
 
   if not running:
     Clock()
@@ -435,7 +461,7 @@ com.grid(row = 22, columns = 400, padx = 560, pady = 0, sticky = "NW")
 # "Serve" scores
 signal_case1 = Canvas(window, bg = "#666699", height = 230, width = 186)
 signal_case1.grid(row = 42, columns = 7, sticky = "W", padx = 50)
-battuta = signal_case1.create_text(93,32, text = "BATTUTA", fill = "#660033", font = ('Orator Std', 20, 'bold'))
+serve = signal_case1.create_text(93,32, text = "SERVE", fill = "#660033", font = ('Orator Std', 20, 'bold'))
 b = 0
 score_b = Label(signal_case1, bg = "#666699", text = b, fg = "#ffccff", font = ('Helvetica', 80, 'bold'))
 score_b.grid(row=42, columns = 7, padx =60, pady = 60)
@@ -443,7 +469,7 @@ score_b.grid(row=42, columns = 7, padx =60, pady = 60)
 # "Forehand" scores
 signal_case2 = Canvas(window, bd = 0, bg = "#666699", height = 230, width = 186)
 signal_case2.grid(row = 42, columns = 8, sticky = "W", padx = 245)
-dritto = signal_case2.create_text(93,32, text = "DRITTO", fill = "#660033", font = ('Orator Std', 20, 'bold'))
+forehand = signal_case2.create_text(93,32, text = "FOREHAND", fill = "#660033", font = ('Orator Std', 20, 'bold'))
 d = 0
 score_d = Label(signal_case2, bg = "#666699", text = d, fg = "#ffccff", font = ('Helvetica', 80, 'bold'))
 score_d.grid(row = 42, columns = 8, padx = 60, pady = 60)
@@ -451,7 +477,7 @@ score_d.grid(row = 42, columns = 8, padx = 60, pady = 60)
 # "Backhand" scores
 signal_case3 = Canvas(window, bd = 0, bg = "#666699", height = 230, width = 186)
 signal_case3.grid(row = 42, columns = 9, sticky = "W", padx = 438)
-rovescio = signal_case3.create_text(93,32, text = "ROVESCIO", fill = "#660033", font = ('Orator Std', 20, 'bold'))
+backhand = signal_case3.create_text(93,32, text = "BACKHAND", fill = "#660033", font = ('Orator Std', 20, 'bold'))
 r = 0
 score_r = Label(signal_case3, text = r, bg = "#666699", fg = "#ffccff", font = ('Helvetica', 80, 'bold'))
 score_r.grid(row = 42, columns = 9, padx = 60, pady = 60)
