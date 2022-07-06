@@ -9,8 +9,7 @@ This code allows to:
 2.	Classify the tennis shot made according to the accelerometer & gyroscope measurements obtained;
 3.	Display on a GUI the shot type predicted in real-time.
 
-To be specified according to your PC settings: 
-- *BT_COM* 
+>  *BT_COM* needs to be specified according to your PC settings.
 
 --------------------------------------------
 
@@ -37,10 +36,10 @@ The GUI contains the following widgets:
 
 **DATA COLLECTION**
 
-Once the COM button is pressed, the *BT_COM* port of the Bluetooth module HC-06 is open at baudrate = 5700 bps.
+Once the COM button is pressed, the *BT_COM* port of the Bluetooth module HC-06 is open at baudrate = 57600 bps.
 When the START button is pressed, the 2° thread (*Start_acquisition()*) calls the function *Predict_Data_Packet()* which allows to acquire and classify the data from the IMU. 
 
-Each acquisition is done by reading *N_PACKETS* and decoding the corresponding array of data (*data[]*).
+Each acquisition is done by reading *N_PACKETS* and decoding the corresponding array of data (*data*).
 With *N_PACKETS* = 40, the acquisition takes about 4 seconds, which is approximatively equal to the duration of one tennis shot.
 
 Each packet contains 122 bytes: 
@@ -59,14 +58,14 @@ This matrix is then given to the Classification Algorithm that, every 4 seconds,
 
 **RANDOM FOREST CLASSIFIER**
 
-* TRAINING
+TRAINING
 
 The *Classifier_Training()* function is run just once when the COM button is pressed. 
 The Random Forest Classifier has been trained with 140 acquisitions (*training_dataset.csv*). 
 One acquisition is given by the 1°, 2° and 3° quantiles values of the 6 IMU measurements.
 For more details about acquistions and choice of the Classifier see the *acquisition_protocol.pdf* file.
 
-*  MAKING PREDICTIONS
+MAKING PREDICTIONS
 
 In the *Predict_Data_Packet()* function, from the mat_big matrix (representing one acquisition) the 1° (0.25), 2° (0.5 = median) and 3° (0.75) quantiles of each IMU measruement are extracted and used to guess the shot made with the Random Forest classifier. 
 The label *shot* returned by the Classification Algorithm is then used to updates the shots' counts in the Scoreboard: 
@@ -75,5 +74,3 @@ The label *shot* returned by the Classification Algorithm is then used to update
 - shot = 2 🡪 Serve
 - shot = 3 🡪 "no shot" 
 
-
---------------------------------------------
