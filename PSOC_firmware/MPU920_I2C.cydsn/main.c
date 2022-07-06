@@ -28,7 +28,6 @@ int main(void)
     CyGlobalIntEnable; 
     
     // Start UART & BT components
-    UART_Debug_Start();
     UART_BT_Start();
     
     // Start I2C component
@@ -52,6 +51,7 @@ int main(void)
     for(;;)
     {
         // Check for switch button
+        
     }
 }
 
