@@ -1,4 +1,4 @@
-#-------------------------------- IMPORT LIBRARIES ----------------------------------#
+#--------------------------------------------- IMPORT LIBRARIES ----------------------------------------------#
 
 import threading 
 from threading import Thread
@@ -18,7 +18,7 @@ import os
 
 TK_SILENCE_DEPRECATION=1
 
-#------------------------------- VARIABLES DEFINITION ---------------------------------#
+#------------------------------------------ VARIABLES DEFINITION --------------------------------------------#
 
 # Global variables
 global b, d, r
@@ -35,7 +35,7 @@ global data
 global flag_stop
 global flag_reset 
 global flag_start
-global colpo
+global hit
 
 
 # Variables initialization
@@ -56,7 +56,7 @@ mat = np.zeros(shape=(n_frame,6), dtype=np.float16) # Array wtih inside 1 packet
 
 
 
-#------------------------------ FUNCTIONS DEFINITIONS --------------------------------#
+#------------------------------------------ FUNCTIONS DEFINITIONS --------------------------------------------#
 
 
 ##############################################
@@ -113,38 +113,35 @@ def Stop_GUI():
   global flag_stop
   global running
   global flagr, flagb, flagd
-  global colpo
+  global hit
   global b, d, r 
-  
-  
 
   acquisition.destroy()
-
   flag_stop = True
 
+  # Stop timer updating
   if running:
     clock_timer.after_cancel(update_time)
     running = False
 
+  # Switch off led
   box_led4 = Canvas(window, bd =0, bg = "#666699", height= 80, width = 80, highlightthickness=0)
   box_led4.grid(row = 20, columns = 7, padx = 135, sticky = "W")
   oval3 = box_led4.create_oval(25,22,55,52, fill = "red")
 
+  # Plot the most frequent hit
   if (b > r or b > d):
     print(b)
-    colpo = Label(window, text = "il colpo più frequente è stata la battuta", font = ("Orator Std", 30, 'bold'), fg = "#660033", bg = "#666699")   
-    colpo.grid(row = 40, columns = 8, pady = 50, padx = 60, sticky = "W")
+    hit = Label(window, text = "The most frequent hit was SERVE", font = ("Orator Std", 15, 'bold'), fg = "#660033", bg = "#666699")   
+    hit.grid(row = 40, columns = 8, pady = 50, padx = 160, sticky = "W")
 
   if (r > b or r > d):
-    colpo = Label(window, text = "il colpo più frequente è stata il rovescio", font = ("Orator Std", 10, 'bold'), fg = "#660033", bg = "#666699")   
-    colpo.grid(row = 40, columns = 8, pady = 50, padx = 160, sticky = "W")
+    hit = Label(window, text = "The most frequent hit was BACKHAND", font = ("Orator Std", 15, 'bold'), fg = "#660033", bg = "#666699")   
+    hit.grid(row = 40, columns = 8, pady = 50, padx = 160, sticky = "W")
 
   if (d > r or d > b):
-    colpo = Label(window, text = "il colpo più frequente è stata il rovescio", font = ("Orator Std", 10, 'bold'), fg = "#660033", bg = "#666699")   
-    colpo.grid(row = 40, columns = 8, pady = 50, padx = 160, sticky = "W")
-
-
-  
+    hit = Label(window, text = "The most frequent hit was FOREHAND", font = ("Orator Std", 15, 'bold'), fg = "#660033", bg = "#666699")   
+    hit.grid(row = 40, columns = 8, pady = 50, padx = 160, sticky = "W")
 
   flagb = False
   flagd = False
@@ -162,10 +159,10 @@ def Reset():
   global flagr, flagb, flagd
   global hour, minute, second
   global b, r, d
+  global hit
 
-  colpo.destroy()
+  hit.destroy()
   acquisition.destroy()
-  
 
   flag_reset = True
 
@@ -192,9 +189,6 @@ def Reset():
   box_led3 = Canvas(window, bd =0, bg = "#666699", height= 80, width = 80, highlightthickness=0)
   box_led3.grid(row = 20, columns = 7, padx = 135, sticky = "W" )
   oval3 = box_led3.create_oval(25,22,55,52, fill = "red")
-
-  #acquisition3 = Label(window, text = "GAME STARTED", font = ("Orator Std", 30, 'bold'), fg = "#666699", bg = "#666699")
-  #acquisition3.grid(row = 40, columns =8, pady = 50, padx = 160, sticky = "W")
 
 
 #########################################################
@@ -309,7 +303,7 @@ def Start_GUI():
   oval2 = box_led2.create_oval(25,22,55,52, fill = "light green")
            
   acquisition = Label(window, text = "GAME STARTED", font = ("Orator Std", 20, 'bold'), fg = "#660033", bg = "#666699")
-  acquisition.grid(row = 40, columns = 8, pady = 50, padx = 160, sticky = "w")
+  acquisition.grid(row = 40, columns = 8, pady = 50, padx = 240, sticky = "w")
 
 
 #########################################
@@ -423,7 +417,7 @@ def Start_acquisition():
       break
 
 
-#---------------------------------- GUI CREATION ------------------------------------#
+#----------------------------------------------- GUI CREATION ------------------------------------------------#
 
 # Window
 window = Tk()
