@@ -66,12 +66,12 @@ The *Classifier_Training()* function is run just once when the COM button is pre
 The Random Forest Classifier has been trained with 140 acquisitions (*training_dataset.csv*). 
 One acquisition is given by the 1°, 2° and 3° quantiles values of the 6 IMU measurements.
 
-For more details about acquistions and choice of the classifier see the *acquisition_protocol.pdf* file.
+For more details about acquistions and choice of the classifier see the *acquisition_protocol.pdf* file in the *Acquisitions* folder.
 
 MAKING PREDICTIONS
 
-In the *Predict_Data_Packet()* function, from the *mat_big* matrix (representing one acquisition) the 1° (0.25), 2° (0.5 = median) and 3° (0.75) quantiles of each IMU measurement are extracted and used to guess the shot made with the Random Forest classifier. 
-The label *shot* returned by the Classification Algorithm is then used to updates the shots' counts in the Scoreboard: 
+In the *Predict_Data_Packet()* function, from the *mat_big* matrix (representing one acquisition), 1° (0.25), 2° (0.5 = median) and 3° (0.75) quantiles of each IMU measurement are extracted and used to guess the shot made with the Random Forest classifier. 
+The label *shot* returned by the Classification Algorithm is then used to update the shots' counts in the Scoreboard: 
 - shot = 0 &#x2192; Forehand
 - shot = 1 &#x2192; Backhand
 - shot = 2 &#x2192; Serve
