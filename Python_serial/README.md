@@ -1,8 +1,8 @@
-# Electronic Technologies and Biosensors Lab - Project 3
-# Academic Year 2021/2022 - II Semester
+## Electronic Technologies and Biosensors Lab - Project 3
+## Academic Year 2021/2022 - II Semester
 
 
-## PYTHON code 
+# PYTHON code 
 
 This code allows to:
 1.  Collect via Bluetooth the raw data from an MPU9250 9-axis IMU sensor mounted on a smart tennis racket;
@@ -17,7 +17,7 @@ This code allows to:
 
 **GUI WINDOW & WIDGETS**
 
-In order to create the  GUI we have used *Tkinter Python Library* and to make it communicate with the Classification Algorithm we used *Threading Python Library*. 
+In order to create the GUI we have used *Tkinter Python Library* and to make it communicate with the Classification Algorithm we used *Threading Python Library*. 
 
 The GUI contains the following widgets: 
 
@@ -42,7 +42,7 @@ Once the COM button is pressed, the *BT_COM* port of the Bluetooth module HC-06 
 When the START button is pressed, the 2° thread (*Start_acquisition()*) calls the function *Predict_Data_Packet()* which allows to acquire and classify the data from the IMU. 
 
 Each acquisition is done by reading *N_PACKETS* and decoding the corresponding array of data (*data*).
-With *N_PACKETS* = 40, the acquisition takes about 4 seconds, which is approximatively equal to the duration of one tennis shot.
+With *N_PACKETS* = 40, the acquisition takes about 4 seconds, which is approximatively equal to the duration of one tennis shot during a match.
 
 Each packet contains 122 bytes: 
 -	1 HEADER = 0XA0
@@ -65,7 +65,8 @@ TRAINING
 The *Classifier_Training()* function is run just once when the COM button is pressed. 
 The Random Forest Classifier has been trained with 140 acquisitions (*training_dataset.csv*). 
 One acquisition is given by the 1°, 2° and 3° quantiles values of the 6 IMU measurements.
-For more details about acquistions and choice of the Classifier see the *acquisition_protocol.pdf* file.
+
+For more details about acquistions and choice of the classifier see the *acquisition_protocol.pdf* file.
 
 MAKING PREDICTIONS
 
