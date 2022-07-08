@@ -29,9 +29,9 @@ In MPU9250, for each axis of each measurement there are 2 registers containing h
 
 We set up the reading settings as follows:
 
-* 1 frame (*data*) containing 🡪 12 bytes: contents of the registers related to accelerometer and gyroscope measurements.
+* 1 frame (*data*) containing &#x2192; 12 bytes: contents of the registers related to accelerometer and gyroscope measurements.
 
-* 1 packet (*packet_to_send*) containing 🡪 (*N_FRAME* * 12 + 2 ) bytes: 
+* 1 packet (*packet_to_send*) containing &#x2192; (*N_FRAME* * 12 + 2 ) bytes: 
     -	1 HEADER = 0XA0
     -	*N_FRAME* * 12 
     -	1 TAIL = 0XC0
