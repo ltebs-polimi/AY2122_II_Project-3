@@ -74,3 +74,16 @@ The system we have obtained up to now can be further improved by:
 * Combining the intertial measurements with dynamic force sensor measurements (FSR), so as to fully characterize the tennis stroke.
 * Calculate meaningful parameters from accelerations through more in-depth data post-processing, useful for biomechanical analysis.
 * Visualization of the obtained data plots on the GUI.
+
+
+-----------------
+
+**Organization of the Github repository**
+
+* *3DPrinting_PCB* 🡪 design of the 3D prints with Fusion 360
+* *Acquisitions* 🡪 CSV files and Python code to train the classifier
+* *Biblio* 🡪 literature
+* *Datasheets* 🡪 HW components' datasheets
+* *PCB* 🡪 design of the custom PCB with Eagle
+* *PSOC_firmware* 🡪 C code to program PSOC microcontroller and HW components 
+* *Python_serial* 🡪 Python code to acquire, decode, classify and display data on a GUI
