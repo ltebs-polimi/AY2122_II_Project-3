@@ -86,4 +86,4 @@ The system we have obtained up to now can be further improved by:
 * *Datasheets* &#x2192; HW components' datasheets
 * *PCB* &#x2192; design of the custom PCB with Eagle
 * *PSOC_firmware* &#x2192; C code to program PSOC microcontroller and HW components 
-* *Python_serial* &#x2192; Python code to acquire, decode, classify and display data on a GUI
+* *Python_serial* &#x2192; Python code to acquire, decode, classify and display data on the implemented GUI
