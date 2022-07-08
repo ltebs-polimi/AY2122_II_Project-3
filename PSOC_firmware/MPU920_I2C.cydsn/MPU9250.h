@@ -476,6 +476,52 @@
     */
     void MPU9250_MAG_Disable(void);
     
+    
+    /* ========= FIFO FUNCTIONS  ========= */
+    
+    /**
+    * @brief Write accelerometer, temperature & gyroscope data into FIFO buffer 
+    *
+    * This function writes to the FIFO buffer the data collected into the accelerometer, 
+    temperature and gyroscope registers (from reg 59 to reg 72) at the sample rate; 
+    buffering of data occurs even if data path is in standby.
+    */
+    void MPU9250_WriteAccTempGyroDataToFIFO(void);
+    
+    /**
+    * @brief Enable FIFO operation mode
+    *
+    * This function enables the FIFO operation mode.
+    */
+    void MPU9250_EnableFifoOperationMode(void);
+    
+    /**
+    * @brief Enable FIFO mode
+    *
+    * This function enables the FIFO mode: when the fifo buffer is full, additional 
+    writes will not be written to fifo.
+    */
+    void MPU9250_ConfigFifoMode(void);
+   
+    /**
+    * @brief Read number of bytes inside FIFO buffer
+    *
+    * This function reads the number of bytes (FIFO_CNT) contained in the FIFO buffer.
+    */
+    int MPU9250_ReadBytesInFifoBuffer(void);
+    
+    /**
+    * @brief Reset FIFO buffer
+    */
+    void MPU9250_FifoReset();
+
+    /**
+    * @brief Read MPU9250_FIFO_R_W_REG
+    *
+    * This function reads the content of MPU9250_FIFO_R_W_REG.
+    */
+    uint8_t MPU9250_ReadFifo_R_W(void);
+    
 #endif
 
 /* [] END OF FILE */

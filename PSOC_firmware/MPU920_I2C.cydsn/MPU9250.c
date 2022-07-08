@@ -29,6 +29,10 @@
     #define MPU9250_SLEEP_MASK 0x40
 #endif
 
+#ifndef MPU9250_COUNTH_BITS_FIFO_MASK
+    #define MPU9250_COUNTH_BITS_FIFO_MASK 0xE0  
+#endif
+
 #ifndef MPU9250_G
     #define MPU9250_G 9.807f
 #endif
@@ -651,4 +655,65 @@ void MPU9250_MAG_Disable(void) {
     CyDelay(10);
     
 }
+
+
+/* ======== NEW FIFO BUFFER FUNCTIONS =========*/
+
+int MPU9250_ReadBytesInFifoBuffer(void) {
+    
+    uint8_t high_bits; 
+    uint8_t low_bits; 
+    uint16_t total_bits; //0-4096
+    int total_bytes; //0-512
+    
+    // Read the bits of FIFO_COUNTH register
+    high_bits = MPU9250_I2C_Read(MPU9250_I2C_ADDRESS, MPU9250_FIFO_COUNTH_REG);
+    // Then, we clear bits [7:5] because they are reserved -> 111000000
+    high_bits &= ~MPU9250_COUNTH_BITS_FIFO_MASK;
+    
+    // Read the bits of FIFO_COUNTL register
+    low_bits = MPU9250_I2C_Read(MPU9250_I2C_ADDRESS, MPU9250_FIFO_COUNTL_REG);
+    
+    // Compute FIFO_CNT 
+    total_bits = ((high_bits<<8) | low_bits)<<3;
+    
+    // Provide the number of bytes contained in the FIFO buffer 
+    total_bytes = (int) total_bits / 8;
+    return total_bytes; 
+}
+
+void MPU9250_FifoReset() {
+    // Reset FIFO_EN
+    MPU9250_I2C_Write(MPU9250_I2C_ADDRESS, MPU9250_USER_CTRL_REG, 0x00);
+    // Set FIFO_RST (this bit auto clears after  1 clock cycle)
+    MPU9250_I2C_Write(MPU9250_I2C_ADDRESS, MPU9250_USER_CTRL_REG, 0x04);
+    // Set FIFO_EN
+    MPU9250_I2C_Write(MPU9250_I2C_ADDRESS, MPU9250_USER_CTRL_REG, 0x40);
+}
+
+uint8 MPU9250_ReadFifo_R_W() {
+    //Read data via I2C 
+    return MPU9250_I2C_Read(MPU9250_I2C_ADDRESS, MPU9250_FIFO_R_W_REG);
+}
+
+void MPU9250_WriteAccTempGyroDataToFIFO(void) {
+    // Set bit [3:7] of MPU9250_FIFO_EN_REG 
+    // Read current value
+    uint8_t temp = MPU9250_I2C_Read(MPU9250_I2C_ADDRESS, MPU9250_FIFO_EN_REG); 
+    // Set bit [3:6]
+    temp |= 0xF8;
+    // Write new value
+    MPU9250_I2C_Write(MPU9250_I2C_ADDRESS, MPU9250_FIFO_EN_REG, temp);
+}
+
+void MPU9250_EnableFifoOperationMode(void) {
+    // Set bit [6] of MPU9250_USER_CTRL_REG 
+    // Read current value
+    uint8_t temp = MPU9250_I2C_Read(MPU9250_I2C_ADDRESS, MPU9250_USER_CTRL_REG); 
+    // Set bit[6]
+    temp |= 0x40;
+    // Write new value
+    MPU9250_I2C_Write(MPU9250_I2C_ADDRESS, MPU9250_USER_CTRL_REG, temp);
+}
+
 /* [] END OF FILE */
