@@ -8,12 +8,12 @@ To develop the PCB with EAGLE, instead of using the symbols and footprints of th
 In this way we used all the available space and we developed a more compact PCB.
 
 We used:
-- For the PSOC 🡪 22 connectors, carefully spaced in order to follow the component dimensions.
-- For the IMU 🡪 6 connectors, carefully spaced in order to follow the component dimensions.
-- For the HC-06 Bluetooth module 🡪 4 connectors in order to follow the component dimensions.
-- For the voltage regulator 🡪 3 connectors.
-- For the battery 🡪 2 connectors.
-- For the LED and for the button (not used later on) 🡪 2 connectors. 
-- For the 330&#8486; LED resistance (not used later on) 🡪 component symbol and footprint.  
+- For the PSOC &#x2192; 22 connectors, carefully spaced in order to follow the component dimensions.
+- For the IMU &#x2192; 6 connectors, carefully spaced in order to follow the component dimensions.
+- For the HC-06 Bluetooth module &#x2192; 4 connectors in order to follow the component dimensions.
+- For the voltage regulator &#x2192; 3 connectors.
+- For the battery &#x2192; 2 connectors.
+- For the LED and for the button (not used later on) &#x2192; 2 connectors. 
+- For the 330&#8486; LED resistance (not used later on) &#x2192; component symbol and footprint.  
 
 After developing the PCB with the standard procedure we soldered the female headers on it and we added the components. 
