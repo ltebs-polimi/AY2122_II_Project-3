@@ -11,8 +11,8 @@ The ideal case should be:
 - the least bulky as possible.
 
 To pursue these goals, we thought of print 2 components:
-1. a main body for PCB housing 🡪 to be attached to the handle of the racket, with a geometry compatible with the size of the PCB;
-2. an end cap 🡪 that would allow to open the case to possibly change PCB and its components. 
+1. a main body for PCB housing &#x2192; to be attached to the handle of the racket, with a geometry compatible with the size of the PCB;
+2. an end cap &#x2192; that would allow to open the case to possibly change PCB and its components. 
 
 The main body presents also two holes, one for a switch button to use to activate the device, one for an LED to signal that the device is running. However, these 2 components were not used in the final device. 
 
