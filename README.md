@@ -70,4 +70,7 @@ Two 3D printed components, fixed together:
 
 **FUTURE DEVELOPMENTS**
 
-The system we have obtained up to now can be further improved by ... 
+The system we have obtained up to now can be further improved by:
+* Combining the intertial measurements with dynamic force sensor measurements (FSR), so as to fully characterize the tennis stroke.
+* Calculate meaningful parameters from accelerations through more in-depth data post-processing, useful for biomechanical analysis.
+* Visualization of the obtained data plots on the GUI.
