@@ -31,6 +31,7 @@ For each acquisition CSV file (400,7), we computed:
 - 1° quantile = 0.25
 - 2° quantile (median)
 - 3° quantile = 0.75
+
 of every IMU measurement, thus summarizing each CSV acquisition file in a 19-dimensional array.
 
 Having 140 acquisition CSV files, the resulting training set is a (140,19) dataframe, converted in the *training_dataset.csv* file.
@@ -44,7 +45,7 @@ Having 140 acquisition CSV files, the resulting training set is a (140,19) dataf
 * Random Forest
 * SVM
 
-Among the reported classifiers, we chose Random Forest as it presented the best performances in terms of F1 score, overfitting and interpretability.
+Among the reported classifiers, we chose Random Forest as it showed the best performances in terms of F1 score, overfitting and interpretability.
 
 
-> Further details in *acquisition_protocol.pdf* file.
+> Further details in the *acquisition_protocol.pdf* file.
