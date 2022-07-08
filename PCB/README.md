@@ -14,6 +14,6 @@ We used:
 - For the voltage regulator 🡪 3 connectors.
 - For the battery 🡪 2 connectors.
 - For the LED and for the button (not used later on) 🡪 2 connectors. 
-- For the 330&#8486; resistance 🡪 component symbol and footprint.  
+- For the 330&#8486; LED resistance (not used later on) 🡪 component symbol and footprint.  
 
 After developing the PCB with the standard procedure we soldered the female headers on it and we added the components. 
