@@ -18,11 +18,11 @@ Tennis movements acquired during each acquisition and related labels set:
 
 The acquisitions have been made by following these settings:
 
-* Duration of each acquisition 🡪 about 4 seconds
-* Number of subjects trained 🡪 4
-* Number of acquisitions for each tennis shot 🡪 10 for each subject
-* Number of acquisitions ofr the 'no-shot' gesture 🡪 20 for 1 subject only
-* Number of acquisition files 🡪 140 (present in the acquisitions_for_TRAINING folder)
+* Duration of each acquisition &#x2192; about 4 seconds
+* Number of subjects trained &#x2192; 4
+* Number of acquisitions for each tennis shot &#x2192; 10 for each subject
+* Number of acquisitions ofr the 'no-shot' gesture &#x2192; 20 for 1 subject only
+* Number of acquisition files &#x2192; 140 (present in the *acquisitions_for_TRAINING* folder)
 
 
 **FEATURES ENGINEERING**
