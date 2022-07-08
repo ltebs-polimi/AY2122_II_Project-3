@@ -130,16 +130,16 @@ def Stop_GUI():
   oval3 = box_led4.create_oval(25,22,55,52, fill = "red")
 
   # Plot the most frequent hit
-  if (b > r or b > d):
+  if (b > r and b > d):
     print(b)
     hit = Label(window, text = "The most frequent hit was SERVE", font = ("Orator Std", 15, 'bold'), fg = "#660033", bg = "#666699")   
     hit.grid(row = 40, columns = 8, pady = 50, padx = 160, sticky = "W")
 
-  if (r > b or r > d):
+  if (r > b and r > d):
     hit = Label(window, text = "The most frequent hit was BACKHAND", font = ("Orator Std", 15, 'bold'), fg = "#660033", bg = "#666699")   
     hit.grid(row = 40, columns = 8, pady = 50, padx = 160, sticky = "W")
 
-  if (d > r or d > b):
+  if (d > r and d > b):
     hit = Label(window, text = "The most frequent hit was FOREHAND", font = ("Orator Std", 15, 'bold'), fg = "#660033", bg = "#666699")   
     hit.grid(row = 40, columns = 8, pady = 50, padx = 160, sticky = "W")
 
