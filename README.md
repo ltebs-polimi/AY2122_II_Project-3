@@ -27,10 +27,10 @@ To pursue this goal we had to:
 
 This project addresses the following clinical needs: 
 
-* Sport performance 🡪 Recognizing and taking memory of shots is a feature that could simplify the work of tennis trainers, that still take notes manually, to understand if the athletes are developing some fundamentals at expenses of the others. 
+* Sport performance &#x2192; Recognizing and taking memory of shots is a feature that could simplify the work of tennis trainers, that still take notes manually, to understand if the athletes are developing some fundamentals at expenses of the others. 
 In the future, associating the information about the type of shot with the corresponding number of points scored by the player can be useful to understand which are the strengths and the weaknesses of the player and therefore to better target the training. 
 
-* Prevention 🡪 Epicondylitis is an inflammation of the wrist extensor muscles, at their point of insertion.
+* Prevention &#x2192; Epicondylitis is an inflammation of the wrist extensor muscles, at their point of insertion.
 It is a consequence of repeated microtraumas over time, typical of those who play tennis.
 Some experts state that from 10% to 50% of cases this pathology is due to an incorrect technique of execution of the backhand. 
 Therefore, the number of backhand shots made by the tennis player could be a useful information for this purpose.
@@ -41,11 +41,11 @@ Therefore, the number of backhand shots made by the tennis player could be a use
 
 On the custom PCB are plugged the following components: 
 
-* PSoC microcontroller 🡪 3.3V - 5V of power supply
+* PSoC microcontroller &#x2192; 3.3V - 5V of power supply
 * 9V battery
 * Voltage regulator LM7805 (9V to 5V)
-* MPU9250 9-axis IMU sensor 🡪 5V of power supply
-* Bluetooth module HC-06 🡪 3.3V - 5V power supply 
+* MPU9250 9-axis IMU sensor &#x2192; 5V of power supply
+* Bluetooth module HC-06 &#x2192; 3.3V - 5V power supply 
 
 
 
@@ -80,10 +80,10 @@ The system we have obtained up to now can be further improved by:
 
 **Organization of the Github repository**
 
-* *3DPrinting_PCB* 🡪 design of the 3D prints with Fusion 360
-* *Acquisitions* 🡪 CSV files and Python code to train the classifier
-* *Biblio* 🡪 literature
-* *Datasheets* 🡪 HW components' datasheets
-* *PCB* 🡪 design of the custom PCB with Eagle
-* *PSOC_firmware* 🡪 C code to program PSOC microcontroller and HW components 
-* *Python_serial* 🡪 Python code to acquire, decode, classify and display data on a GUI
+* *3DPrinting_PCB* &#x2192; design of the 3D prints with Fusion 360
+* *Acquisitions* &#x2192; CSV files and Python code to train the classifier
+* *Biblio* &#x2192; literature
+* *Datasheets* &#x2192; HW components' datasheets
+* *PCB* &#x2192; design of the custom PCB with Eagle
+* *PSOC_firmware* &#x2192; C code to program PSOC microcontroller and HW components 
+* *Python_serial* &#x2192; Python code to acquire, decode, classify and display data on a GUI
